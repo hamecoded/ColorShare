@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 export default class Navigation extends Component {
 
-    render() {
-      const {addColor} = this.props;
-        return (
-            <Container>
-                <div>Colorshare</div>
-                <AddButton onClick={addColor}>Add</AddButton>
-            </Container>
-        );
-    }
+  render() {
+    const {toggleModal} = this.props;
+
+    return (
+      <Container>
+        <div>Colorshare</div>
+        <AddButton onClick={toggleModal}>Add</AddButton>
+      </Container>
+    );
+  }
 }
 
 const Container = styled.div`

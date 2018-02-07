@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 
 export default class Color extends Component {
+
+
   render() {
     const {id, value, deleteColor} = this.props;
 
     return (
-      <Container onClick={(e) => deleteColor(e, id)}>
+      <Container onClick={() => deleteColor(id)}>
         <Preview bg={value}>
           <i className="fa fa-trash"/>
         </Preview>

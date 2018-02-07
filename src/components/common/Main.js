@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import Color from './Color';
+import {connect} from 'react-redux';
+import {remove as removeColorAction} from '../../redux/actions/colorListActions';
 
-export default class Main extends Component {
+
+class Main extends Component {
   render() {
-    const {colors, deleteColor} = this.props;
+    const {colors, removeColorAction} = this.props;
     return (
       <Container>
-        {colors.map((color) => <Color key={color.id} deleteColor={deleteColor} {...color}/>)}
+        {colors.map((color) => <Color key={color.id} deleteColor={removeColorAction} {...color}/>)}
       </Container>
     );
   }
@@ -23,3 +26,12 @@ const Container = styled.div`
   align-content: flex-start;
 `;
 
+const mapStateToProps = (state, ownProps) => ({
+  colors: state.colors
+});
+
+
+//first call receives mapStateToProps and mapDispatchToProps
+export default connect(mapStateToProps, {
+  removeColorAction
+})(Main);
