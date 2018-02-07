@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
-export default class Navigation extends Component {
+class Navigation extends Component {
 
   render() {
-    const {toggleModal} = this.props;
+    const {toggleModal, name} = this.props;
 
     return (
       <Container>
         <div>Colorshare</div>
-        <AddButton onClick={toggleModal}>Add</AddButton>
+        <RightArea>
+          <div>Hello {name}</div>
+          <AddButton onClick={toggleModal}>Add</AddButton>
+        </RightArea>
       </Container>
     );
   }
@@ -27,6 +31,12 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const RightArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const AddButton = styled.div`
   width: 100px;
   height: 40px;
@@ -38,10 +48,18 @@ const AddButton = styled.div`
   align-items: center;
   cursor: pointer;
   transition: all 300ms;
+  margin-left: 20px;
   
   &:hover {
     box-shadow: 0px 2px 12px -1px rgba(0,0,0,0.54);   
   }
 `;
 
+
+const mapStateToProps = (state, ownProps) => ({
+  name: state.user.name
+});
+
+//first call receives mapStateToProps and mapDispatchToProps
+export default connect(mapStateToProps)(Navigation);
 

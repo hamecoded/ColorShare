@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 const mapStateToProps = (state, ownProps) => ({
-  colors: state.colors
+  colors: state.color.colors
 });
 
 
