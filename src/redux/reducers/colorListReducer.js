@@ -2,8 +2,8 @@ import * as actionTypes from '../actionTypes';
 
 const initialState = {
   colors: [
-    {id: 1, value: "#676767"},
-    {id: 2, value: "#fff"}
+    // {id: 1, value: "#676767"},
+    // {id: 2, value: "#fff"}
   ]
 };
 
@@ -14,6 +14,10 @@ const genUuid = () => {
 
 const colorListReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.FETCH_COLORS.SUCCESS:
+      return {
+        colors: action.payload
+      }
     case actionTypes.COLOR_ADD:
       return {
         colors: state.colors.concat([{id: genUuid(), value: action.payload.value}])

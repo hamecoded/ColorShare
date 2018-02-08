@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import Color from './Color';
 import {connect} from 'react-redux';
-import {remove as removeColorAction} from '../../redux/actions/colorListActions';
+import {remove as removeColorAction, fetchColors} from '../../redux/actions/colorListActions';
 
 
 class Main extends Component {
+  componentWillMount(){
+    this.props.fetchColors();
+  }
+
   render() {
     const {colors, removeColorAction} = this.props;
     return (
@@ -33,5 +37,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 //first call receives mapStateToProps and mapDispatchToProps
 export default connect(mapStateToProps, {
-  removeColorAction
+  removeColorAction,
+  fetchColors
 })(Main);

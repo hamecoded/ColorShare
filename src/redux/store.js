@@ -5,12 +5,14 @@ import rootReducer from './reducers/rootReducer';
 
 // middlewares
 import logMiddleware from './middlewares/logMiddleware';
-// import apiMiddleware from './middlewares/apiMiddleware';
+import apiMiddleware from './middlewares/apiMiddleware';
+
 // import firebaseMiddleware from './middlewares/firebaseMiddleware';
 // import googleAnalyticsMiddleware from './middlewares/googleAnalyticsMiddleware';
 
 const middlewares = [
-  logMiddleware
+  logMiddleware,
+  apiMiddleware
 ];
 
 const storeEnhancers = compose(
